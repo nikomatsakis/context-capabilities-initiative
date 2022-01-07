@@ -6,6 +6,6 @@
 
 See the [Charter](./CHARTER.md).
 
-## Who is working on it!
+## Who is working on it?
 
 See the [Charter](./CHARTER.md).
