@@ -6,6 +6,7 @@
 - [🔬 Evaluation](./evaluation/README.md)
     - [Syntax and naming](./evaluation/syntax.md)
     - [Moves and mutability](./evaluation/moves_mut.md)
+    - [Captures and overrides](./evaluation/captures_overrides.md)
     - [Migrating existing APIs](./evaluation/migration.md)
 - [📚 Explainer](./explainer.md)
 - [✨ RFC](./RFC.md)
