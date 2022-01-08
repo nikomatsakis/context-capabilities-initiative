@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>😕 FAQ - {{INITIATIVE_NAME}} initiative</title>
+        <title>😕 FAQ - Contexts and capabilities initiative</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="index.html">👋 Welcome</a></li><li class="chapter-item "><a href="updates.html">✏️ Updates</a></li><li class="chapter-item "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item "><a href="evaluation.html">🔬 Evaluation</a></li><li class="chapter-item "><a href="explainer.html">📚 Explainer</a></li><li class="chapter-item "><a href="RFC.html">✨ RFC</a></li><li class="chapter-item expanded "><a href="FAQ.html" class="active">😕 FAQ</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="index.html">👋 Welcome</a></li><li class="chapter-item "><a href="updates.html">✏️ Updates</a></li><li class="chapter-item "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item "><a href="evaluation/index.html">🔬 Evaluation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="evaluation/syntax.html">Syntax and naming</a></li><li class="chapter-item "><a href="evaluation/moves_mut.html">Moves and mutability</a></li><li class="chapter-item "><a href="evaluation/captures_overrides.html">Captures and overrides</a></li><li class="chapter-item "><a href="evaluation/continuity.html">Continuity of context</a></li><li class="chapter-item "><a href="evaluation/bundling.html">Bundling and splitting</a></li><li class="chapter-item "><a href="evaluation/migration.html">Migrating existing APIs</a></li></ol></li><li class="chapter-item "><a href="explainer.html">📚 Explainer</a></li><li class="chapter-item "><a href="RFC.html">✨ RFC</a></li><li class="chapter-item expanded "><a href="FAQ.html" class="active">😕 FAQ</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -104,7 +104,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">{{INITIATIVE_NAME}} initiative</h1>
+                    <h1 class="menu-title">Contexts and capabilities initiative</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -146,8 +146,26 @@
 </blockquote>
 <h2 id="what-is-the-goal-of-this-initiative"><a class="header" href="#what-is-the-goal-of-this-initiative">What is the goal of this initiative?</a></h2>
 <p>See the <a href="./CHARTER.html">Charter</a>.</p>
-<h2 id="who-is-working-on-it"><a class="header" href="#who-is-working-on-it">Who is working on it!</a></h2>
+<h2 id="who-is-working-on-it"><a class="header" href="#who-is-working-on-it">Who is working on it?</a></h2>
 <p>See the <a href="./CHARTER.html">Charter</a>.</p>
+<h2 id="how-do-other-languages-approach-similar-problems"><a class="header" href="#how-do-other-languages-approach-similar-problems">How do other languages approach similar problems?</a></h2>
+<ul>
+<li><a href="https://dagger.dev/dev-guide/">Dagger</a> is an example of a dependency injection framework in Java.</li>
+<li><a href="https://twitter.com/YohDeadfall/status/1473346207368028161">.NET AsyncLocal</a></li>
+<li><a href="https://twitter.com/edhebi/status/1473698462550085635">Racket parameters</a></li>
+<li>Implicit arguments are supported in <a href="https://coq.inria.fr/refman/language/extensions/implicit-arguments.html">Coq</a>, <a href="https://agda.readthedocs.io/en/v2.6.2.1/language/implicit-arguments.html">Agda</a>, and <a href="https://docs.scala-lang.org/tour/implicit-parameters.html">Scala</a>.
+<ul>
+<li>They can mean <a href="https://twitter.com/brendanzab/status/1473572164116779008">very different things</a> in different languages.</li>
+<li><a href="https://twitter.com/xgalaxy/status/1473454791208615936">Scala 2 vs 3</a></li>
+</ul>
+</li>
+<li>See <a href="https://en.wikipedia.org/wiki/Effect_system">Effect system</a> on Wikipedia.
+<ul>
+<li><a href="https://koka-lang.github.io/koka/doc/book.html">Koka programming language</a></li>
+<li><a href="https://twitter.com/brendanzab/status/1473779303624019969?s=21">Effekt</a></li>
+</ul>
+</li>
+</ul>
 
                     </main>
 

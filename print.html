@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>{{INITIATIVE_NAME}} initiative</title>
+        <title>Contexts and capabilities initiative</title>
         <meta name="robots" content="noindex" />
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="index.html">👋 Welcome</a></li><li class="chapter-item "><a href="updates.html">✏️ Updates</a></li><li class="chapter-item "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item "><a href="evaluation.html">🔬 Evaluation</a></li><li class="chapter-item "><a href="explainer.html">📚 Explainer</a></li><li class="chapter-item "><a href="RFC.html">✨ RFC</a></li><li class="chapter-item "><a href="FAQ.html">😕 FAQ</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="index.html">👋 Welcome</a></li><li class="chapter-item "><a href="updates.html">✏️ Updates</a></li><li class="chapter-item "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item "><a href="evaluation/index.html">🔬 Evaluation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="evaluation/syntax.html">Syntax and naming</a></li><li class="chapter-item "><a href="evaluation/moves_mut.html">Moves and mutability</a></li><li class="chapter-item "><a href="evaluation/captures_overrides.html">Captures and overrides</a></li><li class="chapter-item "><a href="evaluation/continuity.html">Continuity of context</a></li><li class="chapter-item "><a href="evaluation/bundling.html">Bundling and splitting</a></li><li class="chapter-item "><a href="evaluation/migration.html">Migrating existing APIs</a></li></ol></li><li class="chapter-item "><a href="explainer.html">📚 Explainer</a></li><li class="chapter-item "><a href="RFC.html">✨ RFC</a></li><li class="chapter-item "><a href="FAQ.html">😕 FAQ</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -105,7 +105,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">{{INITIATIVE_NAME}} initiative</h1>
+                    <h1 class="menu-title">Contexts and capabilities initiative</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -138,7 +138,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="initiative_name-initiative"><a class="header" href="#initiative_name-initiative">{{INITIATIVE_NAME}} initiative</a></h1>
+                        <h1 id="contexts-and-capabilities-initiative"><a class="header" href="#contexts-and-capabilities-initiative">Contexts and capabilities initiative</a></h1>
 <!--
 
  This is the template for creating an initiative in rust-lang. Be sure to go
@@ -155,10 +155,10 @@
   All of the text across all of the initial files uses the same group of
  variables to allow for easy search and replace. They are listed below.
 
- Example sed command: `sed -i '' 's/{{INITIATIVE_NAME}}/Inline ASM/g' ./**/*.md`
+ Example sed command: `sed -i '' 's/Contexts and capabilities/Inline ASM/g' ./**/*.md`
  *Note* you need `-i ''` on macOS and just `-i` on Linux.
 
- * {{INITIATIVE_NAME}} -> The display name of your group e.g. "Inline ASM".
+ * Contexts and capabilities -> The display name of your group e.g. "Inline ASM".
  * {{INITIATIVE_SLUG}} -> The url slug name of your group used for
    `rust-lang/team` and repo name. e.g. "pg-inline-asm".
  * {{CHAT_PLATFORM}} -> The name of your chat app e.g. "Zulip".
@@ -171,7 +171,7 @@ https://github.com/rust-lang/infra-team/issues/new
 -->
 <p><img src="https://img.shields.io/badge/status-active-brightgreen.svg" alt="initiative status: active" /></p>
 <h2 id="what-is-this"><a class="header" href="#what-is-this">What is this?</a></h2>
-<p>This page tracks the work of the {{INITIATIVE_NAME}} <a href="https://lang-team.rust-lang.org/initiatives.html">initiative</a>! To learn more about what we are trying to do, and to find out the people who are doing it, take a look at the <a href="./CHARTER.html">charter</a>. </p>
+<p>This page tracks the work of the Contexts and capabilities <a href="https://lang-team.rust-lang.org/initiatives.html">initiative</a>! To learn more about what we are trying to do, and to find out the people who are doing it, take a look at the <a href="./CHARTER.html">charter</a>. </p>
 <h2 id="current-status"><a class="header" href="#current-status">Current status</a></h2>
 <p>The following table lists of the stages of an initiative, along with links to the artifacts that will be produced during that stage.</p>
 <table><thead><tr><th>Stage</th><th>State</th><th>Artifact(s)</th></tr></thead><tbody>
@@ -216,18 +216,44 @@ following command.</p>
 </li>
 <li>Link it from the <code>SUMMARY.md</code></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="-initiative_name-charter"><a class="header" href="#-initiative_name-charter">📜 {{INITIATIVE_NAME}} Charter</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-contexts-and-capabilities-charter"><a class="header" href="#-contexts-and-capabilities-charter">📜 Contexts and capabilities Charter</a></h1>
 <!--
  Provide an introduction summarising the goals and motivation behind your
  initiative.
 -->
+<p>Context objects in Rust must be passed manually today. This means that they
+are difficult or impossible to use with code you don't control. It also pushes
+programmers toward making context objects more coarse-grained than they have to
+be and using globals where they aren't desirable.</p>
+<p>The goal of this initiative is to create a first-class way of working with
+contexts in Rust that solves these problems:</p>
+<ul>
+<li>It should be possible to thread contexts through code you don't control,
+without the code having to make any accommodations.</li>
+<li>Contexts are allowed to exist on the stack.</li>
+<li>Contexts can be generic / type erased.</li>
+<li>Contexts can be &quot;decomposed&quot; into smaller pieces or &quot;bundled&quot; into larger
+ones.</li>
+<li>Contexts can be used to implement compile-time dependency injection.</li>
+<li>Contexts work well with <code>dyn</code>, higher order functions, and the like.</li>
+</ul>
+<p>Eventually this mechanism can be used to solve a number of other challenges
+in the language and standard library:</p>
+<ul>
+<li>Making &quot;global&quot; objects like allocators and async executors defineable and
+overridable by the user.</li>
+<li>Describing one's runtime environment in a more detailed way than
+<code>core</code>/<code>alloc</code>/<code>std</code>, which is not always appropriate for runtimes like wasm.</li>
+<li>Making the Rust ecosystem more composable and interoperable.</li>
+</ul>
 <h2 id="proposal"><a class="header" href="#proposal">Proposal</a></h2>
 <!--
-Copy and paste the proposal into here. 
+Copy and paste the proposal into here.
 
 Feel free to move some elements, like design questions that came up,
 into the approriate section.
 -->
+<p>TODO</p>
 <h2 id="membership"><a class="header" href="#membership">Membership</a></h2>
 <table><thead><tr><th>Role</th><th>Github</th></tr></thead><tbody>
 <tr><td><a href="https://lang-team.rust-lang.org/initiatives/process/roles/owner.html">Owner</a></td><td><a href="https://github.com/ghost">ghost</a></td></tr>
@@ -238,8 +264,271 @@ into the approriate section.
 <p>The <em>evaluation</em> surveys the various design approaches that are under consideration.
 It is not required for all initiatives, only those that begin with a problem statement
 but without a clear picture of the best solution. Often the evaluation will refer to topics
-in the <a href="./design-discussions.html">design-discussions</a> for more detailed consideration.</p>
+in the <a href="evaluation/./design-discussions.html">design-discussions</a> for more detailed consideration.</p>
 </blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="syntax-and-naming"><a class="header" href="#syntax-and-naming">Syntax and naming</a></h1>
+<p>This page describes various keywords and surface-level syntactical approaches
+that can be used to implement the feature. More may be added as new ideas
+arise.</p>
+<h2 id="defining-context-items"><a class="header" href="#defining-context-items">Defining context items</a></h2>
+<h3 id="keyword"><a class="header" href="#keyword">Keyword</a></h3>
+<p>The original <a href="https://tmandry.gitlab.io/blog/posts/2021-12-21-context-capabilities/">blog post</a> about this feature called context items a <code>capability</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>capability basic_arena&lt;'a&gt; = &amp;'a BasicArena;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Some people have pushed back against this. While these items are related to
+capabilities, that isn't the full story. A more neutral name is <code>context</code>.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>context basic_arena&lt;'a&gt; = &amp;'a BasicArena;
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="types-and-bounds"><a class="header" href="#types-and-bounds">Types and bounds</a></h3>
+<p>Context objects are simply items that may have where clauses attached to them.
+This means it is possible to define a &quot;bare&quot; context with no type:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>context anything_goes;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Or a specific type, or a generic context with bounds:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>context basic_arena = BasicArena;
+context any_allocator: Allocator;
+context debug_iter: Iterator where Self::Item: Sized;
+<span class="boring">}
+</span></code></pre></pre>
+<p>It's unclear what the best way is to write these. People might be confused by
+the use of <code>=</code> to name an exact type. One approach is to treat them just like
+function arguments.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>context basic_arena: BasicArena;
+context any_allocator: impl Allocator;
+<span class="boring">}
+</span></code></pre></pre>
+<p>But then we also want to be able to write <code>where</code> clauses on the type, which you
+can do with argument-position impl Trait. How would we write <code>debug_iter</code>?</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// This could work...
+context debug_iter: impl Iterator where debug_iter::Item: Sized;
+
+// ...or we could allow you to write this.
+context debug_iter: impl Iterator where Self::Item: Sized;
+<span class="boring">}
+</span></code></pre></pre>
+<p>The problem with using <code>Self</code> is that it looks more like could we would write in
+a trait definition, where <code>:</code> is used to denote supertraits. It's not clear
+whether this would be confusing or not, just something to consider.</p>
+<p>Whatever we choose, we would probably want <code>given</code> clauses to act the same way.</p>
+<p>Note that in where clauses we treat the name of the context as a
+<em>type</em> (as in the first example above), while in expression position we treat it
+as a <em>value</em>.</p>
+<h2 id="providing-and-demanding-context"><a class="header" href="#providing-and-demanding-context">Providing and demanding context</a></h2>
+<p>The original <a href="https://tmandry.gitlab.io/blog/posts/2021-12-21-context-capabilities/">blog post</a> about this feature introduced the <code>with</code> keyword for
+both introducing contexts in an expression and requiring them as clauses.</p>
+<pre><pre class="playground"><code class="language-rust">fn deserialize&lt;'a&gt;(bytes: &amp;[u8]) -&gt; Result&lt;&amp;'a Foo, Error&gt;
+with
+    arena::basic_arena,
+{
+    arena::basic_arena.alloc(Foo::from_bytes(bytes)?)
+}
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    with arena::basic_arena = &amp;arena::BasicArena::new() {
+        let foo: &amp;Foo = deserialize(read_bytes()?)?;
+        println!(&quot;foo: {:?}&quot;, foo);
+    }
+    Ok(())
+}
+</code></pre></pre>
+<p>However, it was pointed out that <code>with</code> can mean many things, and more specific
+keywords could be used like <code>given</code>:</p>
+<pre><pre class="playground"><code class="language-rust">fn deserialize&lt;'a&gt;(bytes: &amp;[u8]) -&gt; Result&lt;&amp;'a Foo, Error&gt;
+given
+    arena::basic_arena,
+{
+    arena::basic_arena.alloc(Foo::from_bytes(bytes)?)
+}
+
+fn main() -&gt; Result&lt;(), Error&gt; {
+    given arena::basic_arena = &amp;arena::BasicArena::new() {
+        let foo: &amp;Foo = deserialize(read_bytes()?)?;
+        println!(&quot;foo: {:?}&quot;, foo);
+    }
+    Ok(())
+}
+</code></pre></pre>
+<p>This can still be used in both places. It's arguably much more clear than <code>with</code>
+clauses that a <code>given</code> clause requires context to be provided to it.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="moves-and-mutation"><a class="header" href="#moves-and-mutation">Moves and mutation</a></h1>
+<p>Should we allow passing contexts (including non-<code>Copy</code> contexts) by value, or
+require them to be passed by reference?</p>
+<h2 id="option-1-shared-references-only"><a class="header" href="#option-1-shared-references-only">Option 1: Shared references only</a></h2>
+<p>This is the simplest option; shared references are always <code>Copy</code>. We can save
+users the trouble of writing <code>&amp;</code> everywhere by implicitly adding it for them.
+Contexts that need mutation can trivially add it with <code>RefCell</code> or <code>Mutex</code>.</p>
+<h2 id="option-2-shared-and-mutable-references-only"><a class="header" href="#option-2-shared-and-mutable-references-only">Option 2: Shared and mutable references only</a></h2>
+<p>Here we would always know that a declared context object remains available, but
+not whether we could hold a valid reference to it. I'm not sure why it would be
+any easier to implement than option 3.</p>
+<h2 id="option-3-allow-passing-by-value-or-by-reference"><a class="header" href="#option-3-allow-passing-by-value-or-by-reference">Option 3: Allow passing by value or by reference</a></h2>
+<p>This option is attractive because it means contexts are not special; they behave
+just like other arguments. However, it might be significantly less ergonomic. It
+could also have unexpected consequences we haven't thought of.</p>
+<p><a href="https://jam1.re/blog/thoughts-on-contexts-and-capabilities-in-rust">This blog post</a>
+has thoughts on how this could work. It raises the idea of treating contexts
+like closure captures in that they are (mutability-inferred) references by
+default, but can be explicitly declared <code>move</code>. Thinking of contexts as captures
+rather than regular arguments in this sense could be justification for such an
+idea.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="captures-and-overrides"><a class="header" href="#captures-and-overrides">Captures and overrides</a></h1>
+<p>Consider:</p>
+<pre><pre class="playground"><code class="language-rust">impl Deserialize for Bar
+given
+    basic_arena: BasicArena,
+{ ... }
+
+fn deserialize_and_print&lt;T&gt;(input: impl Read) -&gt; T
+where
+    T: Deserialize + Debug,
+{ ... }
+
+fn main() {
+    given basic_arena = BasicArena::new() {
+        // This works, even though `deserialize_and_print` knows nothing about
+        // `basic_arena`!
+        let _foo: &amp;Foo = deserialize_and_print(std::io::stdin());
+    }
+}
+</code></pre></pre>
+<p>The call to <code>deserialize_and_print</code> above knows that <code>basic_arena</code> has been
+provided, and therefore that the <code>T: Deserialize</code> bound can be satisfied by the
+impl.</p>
+<p>Mechanically, how do we thread the arena through the impl? Is its <em>value</em>
+captured at the time of using the impl (meaning in <code>main</code>, at the call to
+<code>deserialize_and_print</code>) and &quot;smuggled&quot; through somehow? Or do we only capture
+the <em>knowledge</em> that this context is available, and allow it to be overridden?</p>
+<p>More specifically, what happens if we do this?</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    given basic_arena = BasicArena::new() {
+        let _foo: &amp;Foo = deserialize_and_print_with_arena(std::io::stdin());
+    }
+}
+
+fn deserialize_and_print_with_arena&lt;T&gt;(input: impl Read) -&gt; T
+where
+    T: Deserialize + Debug,
+{
+    // Which arena will win, the caller's or ours?
+    given basic_arena = BasicArena::new() {
+        deserialize_and_print(input)
+    }
+}
+</code></pre></pre>
+<p>Note that this is a pretty contrived example. The above function just creates an
+arena <em>for no particular reason</em>. If we had written its signature just a little
+differently:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn deserialize_and_print_with_arena&lt;T&gt;(input: impl Read) -&gt; T
+where
+    T: given(basic_arena) Deserialize + Debug,
+<span class="boring">}
+</span></code></pre></pre>
+<p>Then it would be obvious what the answer should be: The function &quot;knows&quot; that
+<code>T: Deserialize</code> requires <code>basic_arena</code>, so its definition should always win.
+So this ambiguous situation may not happen that often in practice.</p>
+<p>It still could, however, if we are dealing with one generic argument or trait
+object that has already &quot;captured&quot; some context, and another that explicitly
+requires that context. If the caller provides the context to the latter, should
+it override the context used by the former?</p>
+<p>Using different contexts for each object would surely create confusion for the
+user. Would this come up often in practice? Is there a way to mitigate the
+impact somehow: lints, debugging tools, ...?</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="continuity-of-contexts"><a class="header" href="#continuity-of-contexts">Continuity of contexts</a></h1>
+<p>See also: <a href="evaluation/./captures_overrides.html">Captures and overrides</a></p>
+<p>Should there be a way of expressing that the same context is used across
+multiple calls / interactions with an object?</p>
+<p>TODO</p>
+<p>This specifically came up when talking about providing a <code>Hasher</code> context for
+<code>HashMap</code>.</p>
+<ul>
+<li><a href="https://internals.rust-lang.org/t/blog-post-contexts-and-capabilities-in-rust/15833/18">&quot;HashMap problem&quot;</a></li>
+<li><a href="https://internals.rust-lang.org/t/blog-post-contexts-and-capabilities-in-rust/15833/24">Proposed solution</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bundling-and-splitting"><a class="header" href="#bundling-and-splitting">Bundling and splitting</a></h1>
+<p>It might be nice to be able to declare a single context that includes many
+&quot;sub-contexts&quot;, then split it up into those parts as needed.</p>
+<p>Examples:</p>
+<ul>
+<li>Full I/O capabilities of a &quot;regular process&quot;
+<ul>
+<li>Output only</li>
+<li>Networking</li>
+<li>Clocks</li>
+</ul>
+</li>
+<li>Async executor
+<ul>
+<li>Task spawner</li>
+<li>Timer management</li>
+</ul>
+</li>
+</ul>
+<h2 id="syntax"><a class="header" href="#syntax">Syntax</a></h2>
+<p>If we use the more <a href="evaluation/./syntax.html#types-and-bounds">argument-like syntax</a> to define context types, we
+could reclaim <code>=</code> for this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>context foo;
+context bar;
+context baz;
+
+context kaboodle = foo + bar + baz;
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="migrating-existing-apis"><a class="header" href="#migrating-existing-apis">Migrating existing APIs</a></h1>
+<p>If a library with an existing API could benefit from using context objects in
+its public API, is there a soft migration path that doesn't require both the
+library and its users to change at the same time?</p>
+<h2 id="injectable-arguments"><a class="header" href="#injectable-arguments">Injectable arguments</a></h2>
+<p>An earlier proposal for <a href="https://internals.rust-lang.org/t/can-we-make-a-rusty-effect-system/11697/14"><code>#[inject]</code>able functions</a> hints at an answer:
+make contexts regular function arguments, and allow callers to leave off
+arguments that are already <code>given</code>.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn do_stuff(
+    num: u32,
+    #[inject(given log::logger)]
+    logger: Logger,
+) {
+    info!(logger, &quot;do_stuff({})&quot;, num);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This is similar to how implicit arguments work in Scala. There are some challenges, however.</p>
+<ul>
+<li>What happens if some of your <code>#[inject]</code> arguments are provided and some aren't?</li>
+<li>Should the function signature effectively be rewritten to remove the
+provided arguments in a given scope? Spooky!</li>
+<li>It's tempting to only allow <code>#[inject]</code> arguments at the end to reduce
+confusion. However, it would severely limit its usefulness for migrating
+existing APIs.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-explainer"><a class="header" href="#-explainer">📚 Explainer</a></h1>
 <blockquote>
 <p>The &quot;explainer&quot; is &quot;end-user readable&quot; documentation that explains how to use the feature being deveoped by this initiative.
@@ -259,8 +548,26 @@ Note that some initiatives produce multiple RFCs.</p>
 </blockquote>
 <h2 id="what-is-the-goal-of-this-initiative"><a class="header" href="#what-is-the-goal-of-this-initiative">What is the goal of this initiative?</a></h2>
 <p>See the <a href="./CHARTER.html">Charter</a>.</p>
-<h2 id="who-is-working-on-it"><a class="header" href="#who-is-working-on-it">Who is working on it!</a></h2>
+<h2 id="who-is-working-on-it"><a class="header" href="#who-is-working-on-it">Who is working on it?</a></h2>
 <p>See the <a href="./CHARTER.html">Charter</a>.</p>
+<h2 id="how-do-other-languages-approach-similar-problems"><a class="header" href="#how-do-other-languages-approach-similar-problems">How do other languages approach similar problems?</a></h2>
+<ul>
+<li><a href="https://dagger.dev/dev-guide/">Dagger</a> is an example of a dependency injection framework in Java.</li>
+<li><a href="https://twitter.com/YohDeadfall/status/1473346207368028161">.NET AsyncLocal</a></li>
+<li><a href="https://twitter.com/edhebi/status/1473698462550085635">Racket parameters</a></li>
+<li>Implicit arguments are supported in <a href="https://coq.inria.fr/refman/language/extensions/implicit-arguments.html">Coq</a>, <a href="https://agda.readthedocs.io/en/v2.6.2.1/language/implicit-arguments.html">Agda</a>, and <a href="https://docs.scala-lang.org/tour/implicit-parameters.html">Scala</a>.
+<ul>
+<li>They can mean <a href="https://twitter.com/brendanzab/status/1473572164116779008">very different things</a> in different languages.</li>
+<li><a href="https://twitter.com/xgalaxy/status/1473454791208615936">Scala 2 vs 3</a></li>
+</ul>
+</li>
+<li>See <a href="https://en.wikipedia.org/wiki/Effect_system">Effect system</a> on Wikipedia.
+<ul>
+<li><a href="https://koka-lang.github.io/koka/doc/book.html">Koka programming language</a></li>
+<li><a href="https://twitter.com/brendanzab/status/1473779303624019969?s=21">Effekt</a></li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
