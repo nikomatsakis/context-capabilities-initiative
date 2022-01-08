@@ -8,6 +8,7 @@
     - [Moves and mutability](./evaluation/moves_mut.md)
     - [Captures and overrides](./evaluation/captures_overrides.md)
     - [Continuity of context](./evaluation/continuity.md)
+    - [Bundling and splitting](./evaluation/bundling.md)
     - [Migrating existing APIs](./evaluation/migration.md)
 - [📚 Explainer](./explainer.md)
 - [✨ RFC](./RFC.md)
