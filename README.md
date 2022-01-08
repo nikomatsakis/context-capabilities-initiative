@@ -1,4 +1,4 @@
-# {{INITIATIVE_NAME}} initiative
+# Contexts and capabilities initiative
 <!--
 
  This is the template for creating an initiative in rust-lang. Be sure to go
@@ -15,10 +15,10 @@
   All of the text across all of the initial files uses the same group of
  variables to allow for easy search and replace. They are listed below.
 
- Example sed command: `sed -i '' 's/{{INITIATIVE_NAME}}/Inline ASM/g' ./**/*.md`
+ Example sed command: `sed -i '' 's/Contexts and capabilities/Inline ASM/g' ./**/*.md`
  *Note* you need `-i ''` on macOS and just `-i` on Linux.
 
- * {{INITIATIVE_NAME}} -> The display name of your group e.g. "Inline ASM".
+ * Contexts and capabilities -> The display name of your group e.g. "Inline ASM".
  * {{INITIATIVE_SLUG}} -> The url slug name of your group used for
    `rust-lang/team` and repo name. e.g. "pg-inline-asm".
  * {{CHAT_PLATFORM}} -> The name of your chat app e.g. "Zulip".
@@ -34,7 +34,7 @@ https://github.com/rust-lang/infra-team/issues/new
 
 ## What is this?
 
-This page tracks the work of the {{INITIATIVE_NAME}} [initiative]! To learn more about what we are trying to do, and to find out the people who are doing it, take a look at the [charter]. 
+This page tracks the work of the Contexts and capabilities [initiative]! To learn more about what we are trying to do, and to find out the people who are doing it, take a look at the [charter]. 
 
 [charter]: ./CHARTER.md
 [initiative]: https://lang-team.rust-lang.org/initiatives.html

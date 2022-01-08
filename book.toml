@@ -1,9 +1,9 @@
 [book]
-authors = ["{{INITIATIVE_NAME}} Members"]
+authors = ["Contexts and capabilities Members"]
 language = "en"
 multilingual = false
 src = "."
-title = "{{INITIATIVE_NAME}} initiative"
+title = "Contexts and capabilities initiative"
 
 [output.html]
 no-section-label=true

@@ -1,4 +1,4 @@
-# 📜 {{INITIATIVE_NAME}} Charter
+# 📜 Contexts and capabilities Charter
 <!--
  Provide an introduction summarising the goals and motivation behind your
  initiative.
